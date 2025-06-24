@@ -1011,8 +1011,8 @@ with '-Wl,-commons,use_dylibs' and without
 
     def with_or_without_xpmem(self, activated):
         if not activated:
-            return "--without-xpmem"
-        return f"--with-xpmem={self.spec['xpmem'].prefix}"
+            return "--without-cray-xpmem"
+        return f"--with-cray-xpmem={self.spec['xpmem'].prefix}"
 
     def with_or_without_knem(self, activated):
         if not activated:
