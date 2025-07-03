@@ -151,7 +151,7 @@ class Ncurses(AutotoolsPackage, GNUMirrorPackage):
         # All versions of ncurses C++ currently fail to build against gcc 15. There is a fix
         # upcoming apparently, but this works around it:
         # https://gitlab.archlinux.org/archlinux/packaging/packages/ncurses/-/issues/3
-        if spec.satisfies("+cxx%gcc@15:"):
+        if spec.satisfies("+cxx%gcc@12:"):
             opts.append("CFLAGS=-std=gnu17")
 
         if spec.satisfies("@:6.2"):
