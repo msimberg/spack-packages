@@ -8,7 +8,7 @@ from spack_repo.builtin.build_systems.rocm import ROCmPackage
 from spack.package import *
 
 
-class RcclTests(CMakePackage, ROCmPackage):
+class RcclTests(CMakePackage): #, ROCmPackage):
     """These tests check both the performance and the correctness of RCCL
     operations. They can be compiled against RCCL."""
 
@@ -29,7 +29,7 @@ class RcclTests(CMakePackage, ROCmPackage):
     depends_on("cxx", type="build")  # generated
     requires("%cxx=llvm-amdgpu")
 
-    conflicts("~rocm")
+    # conflicts("~rocm")
     depends_on("hip")
     depends_on("rccl")
     depends_on("mpi", when="+mpi")
@@ -42,6 +42,6 @@ class RcclTests(CMakePackage, ROCmPackage):
             self.define("ROCM_PATH", self.spec["hip"].prefix),
             self.define("RCCL_ROOT", self.spec["rccl"].prefix),
             self.define_from_variant("USE_MPI", "mpi"),
-            self.define("GPU_TARGETS", ";".join(spec.variants["amdgpu_target"].value)),
+            # self.define("GPU_TARGETS", ";".join(spec.variants["amdgpu_target"].value)),
         ]
         return args
